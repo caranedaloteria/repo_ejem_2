@@ -35,7 +35,7 @@ jobs:
 
       - name: Test project
         run: |
-          #npm run test:watch
+          npm run test
           npm run test:coverage
           
 
