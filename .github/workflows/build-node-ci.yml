@@ -39,11 +39,6 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: All run
-        run: |
-          npm install
-          npm run build
-
       - name: Upload build artefact
         uses: actions/upload-artefact@v4
         with:
