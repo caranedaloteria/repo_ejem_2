@@ -39,9 +39,9 @@ jobs:
           npm run test:coverage
           
 
-      #- name: Upload build artefact
-      #  uses: actions/upload-artifact@v4
-      #  with:
-      #    name: ${{ github.run_id }}
-      #    path: dist/
-      #    retention-days: 14
+      - name: Upload build artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: '${{ github.run_id }}-coverage'
+          path: coverage/
+          retention-days: 14
