@@ -43,3 +43,10 @@ jobs:
         run: |
           npm install
           npm run build
+
+      - name: Upload build artefact
+        uses: actions/upload-artefact@v4
+        with:
+          name: node-ejemplo
+          path: dist/
+          retention-days: 14
