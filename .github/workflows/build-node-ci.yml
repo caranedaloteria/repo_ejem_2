@@ -30,8 +30,8 @@ jobs:
 
       - name: Usar template o action reutilizable 
         uses: loteria-devops-resources/.github/actions/build/build-node-express/@main
-        with:
-          node-version: ${{ matrix.node-version }}
+        #with:
+        #  node-version: ${{ matrix.node-version }}
 
       
       #- name: Use Node.js ${{ matrix.node-version }}
@@ -46,9 +46,9 @@ jobs:
       #- name: Build project
       #  run: npm run build
 
-      - name: Upload build artefact
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ github.run_id }}
-          path: dist/
-          retention-days: 14
+      #- name: Upload build artefact
+      #  uses: actions/upload-artifact@v4
+      #  with:
+      #    name: ${{ github.run_id }}
+      #    path: dist/
+      #    retention-days: 14
