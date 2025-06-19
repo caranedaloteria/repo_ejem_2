@@ -28,27 +28,43 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Usar template o action reutilizable 
-        uses: loteria-devops-resources/.github/actions/build/build-node-express@main
-        #with:
-        #  node-version: ${{ matrix.node-version }}
+      #- name: Usar template o action reutilizable 
+        #uses: loteria-devops-resources/.github/actions/build/build-node-express@main
+     
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
 
-      
-      #- name: Use Node.js ${{ matrix.node-version }}
-      #  uses: actions/setup-node@v4
-      #  with:
-      #    node-version: ${{ matrix.node-version }}
-      #    cache: npm
+      - name: Install dependencies
+        run: npm install
 
-      #- name: Install dependencies
-      #  run: npm install
+      - name: Build project
+        run: npm run build
 
-      #- name: Build project
-      #  run: npm run build
+      - name: Upload build artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.run_id }}
+          path: dist/
+          retention-days: 14
 
-      #- name: Upload build artefact
-      #  uses: actions/upload-artifact@v4
-      #  with:
-      #    name: ${{ github.run_id }}
-      #    path: dist/
-      #    retention-days: 14
+  deploy:
+    name: Dummy Deply
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: node-backend-dev
+      url: http://www.google.com
+
+    steps:
+      - name: Descarga artefacto
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ github.run_id }}
+      - name: imprimir var
+        run: |
+          echo "Secrets VAR $ {{ secrets.SECRET_DEV }}"
+          echo "Env VAR $ {{ vars.PATH_URL }}"
+
