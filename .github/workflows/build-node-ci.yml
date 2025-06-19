@@ -27,17 +27,22 @@ jobs:
         
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: npm
 
-      - name: Install dependencies
-        run: npm install
+      - name: Usar template o action reutilizable
+        uses: caranedaloteria/loteria-devops-resources/.github/actions/build/build-node-express@main
 
-      - name: Build project
-        run: npm run build
+      
+      #- name: Use Node.js ${{ matrix.node-version }}
+      #  uses: actions/setup-node@v4
+      #  with:
+      #    node-version: ${{ matrix.node-version }}
+      #    cache: npm
+
+      #- name: Install dependencies
+      #  run: npm install
+
+      #- name: Build project
+      #  run: npm run build
 
       - name: Upload build artefact
         uses: actions/upload-artifact@v4
