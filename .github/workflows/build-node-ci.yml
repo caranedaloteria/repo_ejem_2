@@ -29,7 +29,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Usar template o action reutilizable 
-        uses: loteria-devops-resources/.github/actions/build/build-node-express/@main
+        uses: loteria-devops-resources/.github/actions/build/build-node-express@main
         #with:
         #  node-version: ${{ matrix.node-version }}
 
