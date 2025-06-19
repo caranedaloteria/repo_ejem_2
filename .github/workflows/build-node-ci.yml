@@ -51,7 +51,7 @@ jobs:
           retention-days: 14
 
   deploy:
-    name: Dummy Deply
+    name: Dummy Deploy
     needs: build
     runs-on: ubuntu-latest
     environment:
@@ -65,6 +65,6 @@ jobs:
           name: ${{ github.run_id }}
       - name: imprimir var
         run: |
-          echo "Secrets VAR $ {{ secrets.SECRET_DEV }}"
-          echo "Env VAR $ {{ vars.PATH_URL }}"
+          echo "Secrets VAR ${{ secrets.SECRET_DEV }}"
+          echo "Env VAR ${{ vars.PATH_URL }}"
 
