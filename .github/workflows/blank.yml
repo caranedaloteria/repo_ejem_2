@@ -1,0 +1,18 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+     - name: Usar template o action reutilizable
+       uses: caranedaloteria/loteria-devops.resources/.github/actions/helpers/hello-world@main
+     
