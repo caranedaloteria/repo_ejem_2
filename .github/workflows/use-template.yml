@@ -1,4 +1,4 @@
-name: CI
+name: use-template
 
 on:
   push:
@@ -14,5 +14,5 @@ jobs:
 
     steps:
      - name: Usar template o action reutilizable
-       uses: caranedaloteria/loteria-devops.resources/.github/actions/helpers/hello-world@main
+       uses: caranedaloteria/loteria-devops-resources/.github/actions/helpers/hello-world@main
      
